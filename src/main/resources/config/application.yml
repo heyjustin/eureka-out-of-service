@@ -1,0 +1,27 @@
+spring:
+  application:
+    name:  eureka-out-of-service-test
+
+logging:
+  level:
+    root: INFO
+    com.test.health: DEBUG
+
+endpoints:
+  health:
+    sensitive: false
+  info:
+    sensitive: false
+  shutdown:
+    enabled: true
+
+info:
+  name: "${spring.application.name}"
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    metadataMap:
+      instanceId: ${spring.application.name}:PID-${PID}
